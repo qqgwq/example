@@ -1,0 +1,63 @@
+<%= form_for @user, remote: true, class: 'form-create' do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, id: :user_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email, id: :user_email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content%>
+    <span class="limit"></span>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#new_user").validate({
+      rules: {
+        "user[name]":{
+          required: true
+        },
+        "user[email]":{
+          required: true
+        },
+        "user[content]":{
+          required: true
+        }
+      },
+      messages: {
+        "user[name]":{
+          required: "Name can't blank"
+        },
+        "user[email]":{
+          required: "Email can't blank"
+        },
+        "user[content]":{
+          required: "Content can't blank"
+        }
+      }
+    });
+  });
+  
+</script>

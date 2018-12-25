@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= display_meta_tags site: 'My website' %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-fixed">
+        <div class="navbar-header">
+          <a class="navbar-brand"><%= link_to "Home", root_path %></a>
+        </div>
+        <ul class="nav navbar-right">
+          <% if current_user %>
+          <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
+          <%= link_to('修改密碼', edit_registration_path(:user)) %>
+        <% else %>
+          <%= link_to('註冊', new_registration_path(:user)) %> |
+          <%= link_to('登入', new_session_path(:user)) %>
+        <% end %>
+        </ul>
+      </nav>
+    </div>
+    <%= yield %>
+    <%= yield :javascript %>
+  </body>
+</html>

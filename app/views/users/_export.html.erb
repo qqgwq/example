@@ -1,0 +1,4 @@
+<%= form_tag export_users_path(format: :csv), method: :post do %>
+  <%= hidden_field_tag 'user_ids' %>
+  <%= submit_tag "Export", class: "btn btn-success", data: { disable_with: false } %>
+<% end %>

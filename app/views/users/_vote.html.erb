@@ -1,0 +1,19 @@
+<% if @user.like.include?(current_user.id.to_s) %>
+  <%= link_to dislike_user_path(@user), method: :post, remote: true do %>
+    <div id="heart">
+      <i class="fa fa-heart heart" style="color:red"></i>
+    </div>
+    <div id="count">
+      <%= @user.like.count %>
+    </div>
+  <% end %>
+<% else %>
+  <%= link_to like_user_path(@user), method: :post, remote: true do %>
+    <div id="heart">
+      <i class="fa fa-heart heart"></i>
+    </div>
+    <div id="count">
+      <%= @user.like.count %>
+    </div>
+  <% end %>
+<% end %>

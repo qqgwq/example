@@ -1,0 +1,82 @@
+<p id="notice"><%= notice %></p>
+<div class="pull-right">
+  <%= render 'export' %>
+</div>
+
+<div class="pull-right start">
+  <%= form_tag users_path, method: :get, class: 'list' do %>
+    <%= label_tag "start_at" %>
+    <%= text_field_tag :start_at, nil, :class => 'datetimepicker', "data-date-format" => "yyyy-mm-dd" %>
+    <%= label_tag "end_at" %>
+    <%= text_field_tag :end_at, nil, :class => 'datetimepicker', "data-date-format" => "yyyy-mm-dd" %> 
+    <%= submit_tag :Search, class: "btn btn-success", data: {disable_with: false}%>
+  <% end %>
+</div>
+
+
+<table class="table user_list table-bordered table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Content</th>
+      <th>Create At</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr id="user_delete_<%= user.id %>" data-id="<%= user.id %>">
+        <td><input type="checkbox" class="user_id" data-id = "<%= user.id %>"></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.content %></td>
+        <td><%= user.created_at.to_date %></td>
+        <td><%= link_to 'Show', user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td class="dog">Destroy</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+$(function() {
+  var checkedIds = [];
+
+  $('input:checkbox').change(
+    function(e){
+      if ($(this).is(':checked')) {
+          checkedIds.push(e.target.dataset.id);
+          $('#user_ids').val(checkedIds);
+      } else {
+          checkedIds.splice(e.target.dataset.id);
+          $('#user_ids').val(checkedIds);
+      };
+    });
+});
+
+$(function(){
+  $('.user_list').floatThead({
+      position: 'absolute'
+  });
+
+  $('.user_list').floatThead('reflow');
+});
+
+$(function(){
+  $('.datetimepicker').datepicker()
+});
+
+</script>
+
+<% end %>

@@ -1,0 +1,3 @@
+$('#like_<%= @user.id %>').html('<%= j render 'vote', locals: {user: @user} %>');
+$('#count').text('<%= @user.like.count %>');
+$('.heart').css('color', '#666');
