@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       post 'export'
+      get 'hot'
     end
     member do
       post 'like'

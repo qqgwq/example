@@ -13,36 +13,45 @@
   <% end %>
 </div>
 
-
-<table class="table user_list table-bordered table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Content</th>
-      <th>Create At</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr id="user_delete_<%= user.id %>" data-id="<%= user.id %>">
-        <td><input type="checkbox" class="user_id" data-id = "<%= user.id %>"></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.content %></td>
-        <td><%= user.created_at.to_date %></td>
-        <td><%= link_to 'Show', user_path(user) %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td class="dog">Destroy</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Content</th>
+            <th>Create At</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @users.each do |user| %>
+            <tr id="user_delete_<%= user.id %>" data-id="<%= user.id %>">
+              <td><input type="checkbox" class="user_id" data-id = "<%= user.id %>"></td>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.content %></td>
+              <td><%= user.created_at.to_date %></td>
+              <% if current_user %>
+                <td><%= link_to 'Show', user_path(user) %></td>
+              <% end %>
+              <% if user == current_user %>
+                <td><%= link_to 'Edit', edit_user_path(user) %></td>
+                <td class="dog">Destroy</td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <br>
 
@@ -66,11 +75,20 @@ $(function() {
 });
 
 $(function(){
-  $('.user_list').floatThead({
-      position: 'absolute'
-  });
+  $(document).on('turbolinks:before-cache', function () {
+    /* ----------- Fix table header ----------- */
+    $('table.table-bordered').floatThead('destroy')
+  })
 
-  $('.user_list').floatThead('reflow');
+  $(document).on('turbolinks:load', function () {
+    $(document).ready(function () {
+      /* ----------- Fix table header ----------- */
+      $('table.table-bordered').floatThead({
+        position: 'absolute',
+        autoReflow: true
+      });
+    });
+  });
 });
 
 $(function(){
