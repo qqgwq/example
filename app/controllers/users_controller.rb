@@ -82,7 +82,7 @@ class UsersController < ApplicationController
 
   def like
     @user = User.find(params[:id])
-    @user.like << current_user.id.to_s
+    @user.like << current_user.id
     @user.save!
     respond_to do |format|
       format.html
@@ -91,8 +91,9 @@ class UsersController < ApplicationController
   end
 
   def dislike
+    #binding.pry
     @user = User.find(params[:id])
-    @user.like.delete(@user.like.join(''))
+    @user.like.delete(current_user.id.to_s)
     @user.save!
     respond_to do |format|
       format.html
