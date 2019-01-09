@@ -42,6 +42,9 @@ gem "font-awesome-rails"
 gem 'jquery-validation-rails'
 gem 'redis-objects'
 gem 'devise'
+gem 'redis', '~> 4.0'
+gem 'redis-namespace'
+gem 'vuejs-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

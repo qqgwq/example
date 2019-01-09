@@ -176,6 +176,8 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     redis (4.1.0)
+    redis-namespace (1.6.0)
+      redis (>= 3.0.4)
     redis-objects (1.4.3)
       redis (~> 4.0)
     ref (2.0.0)
@@ -229,6 +231,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    vuejs-rails (2.5.13)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -264,6 +267,8 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.7)
   rails (~> 5.1.6)
+  redis (~> 4.0)
+  redis-namespace
   redis-objects
   sass-rails (~> 5.0)
   selenium-webdriver
@@ -275,6 +280,7 @@ DEPENDENCIES
   twitter-bootstrap-rails!
   tzinfo-data
   uglifier (>= 1.3.0)
+  vuejs-rails
   web-console (>= 3.3.0)
 
 BUNDLED WITH
