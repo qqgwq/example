@@ -21,6 +21,7 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-datepicker
+//= require select2-full
 
 
 $(document).ready(function(){
@@ -69,3 +70,7 @@ $(document).ready(function(e){
 //     });
 //   });
 // });
+
+$(document).ready(function() {
+  $('#user_tag_ids').select2();
+});

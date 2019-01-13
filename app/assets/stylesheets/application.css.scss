@@ -14,10 +14,15 @@
  *= require_self
  *= require bootstrap-datepicker
  *= require font-awesome
+ *= require select2
  */
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import "font-awesome";
+
+body{
+  background: #e5e5e5;
+}
 
 table.floatThead-table {
   background-color: #eee;

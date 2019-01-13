@@ -45,6 +45,8 @@ gem 'devise'
 gem 'redis', '~> 4.0'
 gem 'redis-namespace'
 gem 'vuejs-rails'
+#gem 'bootstrap-select-rails'
+gem "select2-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
