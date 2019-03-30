@@ -1,4 +1,4 @@
-source 'https://gems.ruby-china.com'
+source 'http://gems.ruby-china.com'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -36,7 +36,7 @@ gem 'faker'
 gem 'bootstrap-datepicker-rails'
 gem 'simple_form'
 gem 'meta-tags'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails'
 gem "therubyracer"
 gem "font-awesome-rails"
 gem 'jquery-validation-rails'
@@ -47,6 +47,7 @@ gem 'redis-namespace'
 gem 'vuejs-rails'
 #gem 'bootstrap-select-rails'
 gem "select2-rails"
+gem 'kaminari'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

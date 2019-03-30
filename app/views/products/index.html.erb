@@ -1,0 +1,14 @@
+<div class="panel-heading">
+  <h1>All Products</h1>
+</div>
+</div>
+<div class="product">
+<% @products.each do |p| %>
+  <div class="products">
+    <div class="image"><%= image_tag(p.image, width: 120) %></div>
+    <div class="name">Name:<%= p.name %></div>
+    <div class="price">Price:<%= p.price %></div>
+    <div class="description">Description:<%= p.description %></div>
+    <div class="category">Category:<%= p.category.name %></div>
+  </div>
+<% end %>

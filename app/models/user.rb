@@ -9,9 +9,9 @@ class User < ApplicationRecord
 
   def self.to_csv(users)
     CSV.generate do |csv|
-      csv << column_names
+      csv << ["name", "content", "email"]
       users.each do |user|
-        csv << user.attributes.values_at(*column_names)
+        csv << [user.name, user.content, user.email]
       end
     end
   end

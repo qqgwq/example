@@ -1,0 +1,2 @@
+$('tbody').html('<%= escape_javascript(render partial: "users/paginate", collection: @users, as: :user) %>');
+$("#paginate").html("<%= escape_javascript(paginate(@users, remote: true)) %>")

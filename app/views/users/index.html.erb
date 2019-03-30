@@ -19,38 +19,21 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th></th>
+            <th><input type="checkbox" class="user_id" id="checked"></th>
             <th>Name</th>
             <th>Email</th>
             <th>Content</th>
             <th>Create At</th>
             <th>Tag</th>
-            <th></th>
-            <th></th>
-            <th></th>
           </tr>
         </thead>
-      
-        <tbody>
-          <% @users.each do |user| %>
-            <tr id="user_delete_<%= user.id %>" data-id="<%= user.id %>">
-              <td><input type="checkbox" class="user_id" data-id = "<%= user.id %>"></td>
-              <td><%= user.name %></td>
-              <td><%= user.email %></td>
-              <td><%= user.content %></td>
-              <td><%= user.created_at.to_date %></td>
-              <td><%= user.tag_list %></td>
-              <% if current_user %>
-                <td><%= link_to 'Show', user_path(user) %></td>
-              <% end %>
-              <% if user == current_user %>
-                <td><%= link_to 'Edit', edit_user_path(user) %></td>
-                <td class="dog">Destroy</td>
-              <% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+				<tbody>
+					<%= render partial: 'paginate', collection: @users, as: :user %>
+				</tbody>
+			</table>
+			<div id = "paginate">
+				<%= paginate @users, remote: true %>
+  		</div>
     </div>
   </div>
 </div>
@@ -61,17 +44,38 @@
 
 <script type="text/javascript">
 
-$(function() {
-  var checkedIds = [];
+$(function(){
+  var checkIds = [];
+  $('#checked').click(function(event){
+    if(this.checked){
+      $('tbody input:checkbox').each(function(){
+        this.checked = true;
+        checkIds.push($(this).attr("data-id"));
+        $('#user_ids').val(checkIds);
+      });
+    } else{
+      $(':checkbox').each(function(){
+        this.checked = false;
+        checkIds.splice($(this).attr("data-id"));
+        $('#user_ids').val(checkIds);
+      });
+    }
+  })
+})
 
-  $('input:checkbox').change(
+$(function() {
+  var checkedId = [];
+
+  $('tbody input:checkbox').change(
     function(e){
       if ($(this).is(':checked')) {
-          checkedIds.push(e.target.dataset.id);
-          $('#user_ids').val(checkedIds);
+          checkedId.push(e.target.dataset.id);
+          $('#user_ids').val(checkedId);
       } else {
-          checkedIds.splice(e.target.dataset.id);
-          $('#user_ids').val(checkedIds);
+          if ((index = checkedId.indexOf(e.target.dataset.id)) !== -1) {
+              checkedId.splice(index, 1);
+              $('#user_ids').val(checkedId);
+        } 
       };
     });
 });
@@ -96,6 +100,8 @@ $(function(){
 $(function(){
   $('.datetimepicker').datepicker()
 });
+
+
 </script>
 
 <% end %>

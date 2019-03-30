@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     if params[:start_at].present? and params[:end_at].present?
-      @users = User.range(params[:start_at], params[:end_at]).order(created_at: :asc)
+      @users = User.range(params[:start_at], params[:end_at]).order(created_at: :asc).page(params[:page]).per(10)
     else
-      @users = User.order(created_at: :asc)
+      @users = User.order(created_at: :asc).page(params[:page]).per(10)
     end
   end
 

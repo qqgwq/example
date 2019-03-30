@@ -4,12 +4,13 @@ namespace :name do
       name = Faker::Name.name
       email = Faker::Internet.email
       content = Faker::Dog.name
-      User.create!(
+      user = User.create!(
         :name => name,
         :email => email,
         :content => content,
         :password => 'gwq1995'
       )
+      tag = user.tags.create(:name => name)
     end
   end
 end
