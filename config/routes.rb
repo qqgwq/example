@@ -10,10 +10,13 @@ Rails.application.routes.draw do
     member do
       post 'like'
       post 'dislike'
+      get :following, :followers
     end
   end
 
   namespace :admin do
     resources :users
   end
+
+  resources :relationships, only: [:create, :destroy]
 end

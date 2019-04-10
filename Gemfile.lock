@@ -114,6 +114,9 @@ GEM
     kaminari-activerecord (1.1.1)
       activerecord
       kaminari-core (= 1.1.1)
+    kaminari-bootstrap (3.0.1)
+      kaminari (>= 0.13.0)
+      rails
     kaminari-core (1.1.1)
     less (2.6.0)
       commonjs (~> 0.2.7)
@@ -297,6 +300,7 @@ DEPENDENCIES
   jquery-rails
   jquery-validation-rails
   kaminari
+  kaminari-bootstrap (~> 3.0, >= 3.0.1)
   listen (>= 3.0.5, < 3.2)
   meta-tags
   pg

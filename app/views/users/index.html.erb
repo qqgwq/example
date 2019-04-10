@@ -20,6 +20,7 @@
         <thead>
           <tr>
             <th><input type="checkbox" class="user_id" id="checked"></th>
+            <th></th>
             <th>Name</th>
             <th>Email</th>
             <th>Content</th>
@@ -27,8 +28,8 @@
             <th>Tag</th>
           </tr>
         </thead>
-				<tbody>
-					<%= render partial: 'paginate', collection: @users, as: :user %>
+        <tbody>
+          <%= render partial: 'paginate', collection: @users, as: :user %>
 				</tbody>
 			</table>
 			<div id = "paginate">
