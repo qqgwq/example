@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       post 'like'
       post 'dislike'
       get :following, :followers
+      put 'online'
+      put 'left'
     end
   end
 

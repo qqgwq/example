@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   scope :range, ->(start_at, end_at){where("created_at >= ? and created_at <= ?", start_at, end_at)}
+  enum status: { online: 0, left: 1 }
 
   def self.to_csv(users)
     CSV.generate do |csv|

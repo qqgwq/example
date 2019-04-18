@@ -100,6 +100,22 @@ class UsersController < ApplicationController
       format.js
     end
   end
+
+  def online
+    @user = User.find(params[:id])
+    @user.left!
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def left
+    @user = User.find(params[:id])
+    @user.online!
+    respond_to do |format|
+      format.js
+    end
+  end
   
   private
     # Use callbacks to share common setup or constraints between actions.

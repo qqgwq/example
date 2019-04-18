@@ -14,9 +14,15 @@
           <%= link_to "Home", root_path %>
         </div>
         <ul class="nav navbar-right">
-          <% if current_user %>
+          <% if current_user  %>
+          <div class="user_name">
+            <%= current_user.name %>
+          </div>
+          <div id="status">
+            <%= render 'line' %>
+          </div>
           <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
-          <%= link_to('修改密碼', edit_registration_path(:user)) %>
+          <%#= link_to('修改密碼', edit_registration_path(:user)) %>
           <%= link_to "All Products", products_path %>
         <% else %>
           <%= link_to('註冊', new_registration_path(:user)) %> |

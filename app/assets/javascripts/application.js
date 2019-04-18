@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+
 //= require vue
 //= require twitter/bootstrap
 //= bootstrap-sprockets
