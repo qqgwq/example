@@ -10,5 +10,8 @@
     <div class="price">Price:<%= p.price %></div>
     <div class="description">Description:<%= p.description %></div>
     <div class="category">Category:<%= p.category.name %></div>
+    Speed  : <%= rating_for p, 'speed', disable_after_rate: false  %>
+    Engine : <%= rating_for p, 'engine'  %>
+    Price  : <%= rating_for p, 'price' %>
   </div>
 <% end %>

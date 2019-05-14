@@ -13,6 +13,7 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  ratyrate_rater
   scope :range, ->(start_at, end_at){where("created_at >= ? and created_at <= ?", start_at, end_at)}
   enum status: { online: 0, left: 1 }
 

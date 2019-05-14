@@ -23,6 +23,8 @@
 //= require_tree .
 //= require bootstrap-datepicker
 //= require select2-full
+//= require jquery.raty
+//= require ratyrate
 
 
 $(document).ready(function(){

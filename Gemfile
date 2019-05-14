@@ -49,6 +49,7 @@ gem 'vuejs-rails'
 gem "select2-rails"
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0', '>= 3.0.1'
+gem 'ratyrate'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
