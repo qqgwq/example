@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users
   root 'users#index'
-  resources :products
+  post 'check_score', to: 'ratings#check_score'
+  resources :products do
+    resource :ratings, only: [:create, :destroy]
+  end
+  resources :ratings
   resources :users do
     collection do
       post 'export'

@@ -1,0 +1,18 @@
+<div class="products">
+  <div class="image"><%= image_tag(product.image, width: 120) %></div>
+  <div class="name">Name:<%= product.name %></div>
+  <div class="price">Price:<%= product.price %></div>
+  <div class="description">Description:<%= product.description %></div>
+  <div class="category">Category:<%= product.category.name %></div>
+  
+    <div class="stars">
+      <div id="rating">
+        <%= form_for([product.ratings.build], remote: true) do |f| %>
+          <% 5.times do |i| %>
+            <i class="star fa fa-star-o" data-p="<%= product.id %>" data-rating=""></i>
+            <%= f.hidden_field :score %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>

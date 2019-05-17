@@ -25,7 +25,7 @@
 //= require select2-full
 //= require jquery.raty
 //= require ratyrate
-
+//= require jquery.cookie
 
 $(document).ready(function(){
   $('.dog').click(function(){
@@ -77,3 +77,33 @@ $(document).ready(function(e){
 $(document).ready(function() {
   $('#user_tag_ids').select2();
 });
+
+$(document).ready(function(){
+  $('#rating i').hover( function(){
+    $(this).add($(this).prevAll("i")).removeClass("fa-star-o").addClass("fa-star");
+    $(this).nextAll("i").removeClass('fa fa-star').addClass('fa fa-star-o');
+    var id = $('.star').attr('data-p');
+    $('#rating_score').val(id);
+    var rating = $('.star').data('data-rating');
+    if(rating){
+      $.ajax({
+        url: "/products/"+id+"/ratings/",
+        type: 'DELETE',
+        dataType: 'json',
+        data: {product_id: id},
+        success: function(data){
+        }
+      })
+    }else{
+      $.ajax({
+        url: "/products/"+id+"/ratings/",
+        type: 'POST',
+        dataType: 'json',
+        data: {product_id: id},
+        success: function(data){
+          $('.star').data('data-rating', data.rating.id);
+        }
+      })
+    }
+  })
+})
