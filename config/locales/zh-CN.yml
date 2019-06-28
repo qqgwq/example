@@ -1,0 +1,6 @@
+zh-CN:
+  activerecord:
+    attributes:
+      user/status:
+        online: "在线"
+        left: "离开"

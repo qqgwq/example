@@ -50,7 +50,11 @@ gem "select2-rails"
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0', '>= 3.0.1'
 gem 'ratyrate'
-
+gem 'rateyo-rails'
+gem 'lunar_blessing', github: 'mycolorway/lunar_blessing'
+gem 'jwt'
+#gem 'enumize'
+gem "rails-i18n"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

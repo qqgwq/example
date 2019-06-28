@@ -30,4 +30,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    enums:
+      user:
+        status:
+          online: Online
+          left: Left
+        status_color:
+          online: "#999999"
+          left: "green"

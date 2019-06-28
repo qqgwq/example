@@ -1,5 +1,5 @@
 <% if current_user.online? %>
-  <%= link_to "Online", online_user_path(current_user), method: :put, remote: true, style: 'background-color:red' %>
+  <%= link_to User.human_attribute_name("status.#{current_user.status}"), online_user_path(current_user), method: :put, remote: true, style: 'background-color:red' %>
 <% else %>
-  <%= link_to "Left", left_user_path(current_user), method: :put, remote: true, style: 'background-color:grey' %>
+  <%= link_to User.human_attribute_name("status.#{current_user.status}"), left_user_path(current_user), method: :put, remote: true, style: 'background-color:grey' %>
 <% end %>

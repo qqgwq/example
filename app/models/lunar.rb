@@ -1,0 +1,2 @@
+class Lunar < ApplicationRecord
+end
